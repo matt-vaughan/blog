@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	</head>
+    <body>
+        <nav>
+            <ul class="nav">
+                <li class="left"><a href="/">Home</a></li>
+                <li class="left"><a href="/register">Register</a></li>
+                <li class="left"><a href="/login">Login</a></li>
+                <li class="left"><a href="/post">Post</a></li>
+                <li class="left"><a href="/view-posts">View Posts</a></li>
+            </ul>
+        </nav>
+        <div>
+            {{content}}
+            {% for id, user, post, date_posted in posts %}
+                <h3>{{date_posted}} @{{user}}</h3>
+                <p>{{post}}</p>
+            {% endfor %}
+        </div>
+    </body>
+</html>

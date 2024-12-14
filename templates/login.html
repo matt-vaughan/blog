@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html><head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head><body>
+<form method="POST" action="/login-action">
+    <label for="phone">phone number</label>
+    <input id="phone" name="phone" type="tel" placeholder="+1-800-555-1212" pattern="^[+]{1}[0-9]{10,15}$" required></input>
+    <label for="password">password</label>
+    <input id="password" name="password" type="password" required></input>
+    <input id="login" type="submit">login</input>
+</form>
+</body></html>

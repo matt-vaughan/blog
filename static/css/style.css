@@ -1,0 +1,62 @@
+body {
+    margin:0;
+    padding:0;
+    height: 100vh;
+}
+
+canvas {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:-1;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+div.page {
+    position:absolute;
+    z-index:0;
+    width: 80%;
+    height: 100vh;
+    margin: 10px 10%;
+}
+
+div#content {
+    height: 80vh;
+}
+
+#code  {
+    background-color:rgba(100,100,100,0.5);
+    overflow: scroll;
+    white-space: pre-wrap;
+    height: 70vh;
+}
+
+ul.nav {
+    width: auto;
+    margin: 10%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+ul.nav li a:hover {
+    background-color: #111;
+}
