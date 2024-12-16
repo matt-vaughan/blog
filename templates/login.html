@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html><head>
-    <link rel="stylesheet" href="/blog/static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head><body>
-<form method="POST" action="/blog/login-action">
+<form method="POST" action="/login-action">
     <label for="phone">phone number</label>
     <input id="phone" name="phone" type="tel" placeholder="+1-800-555-1212" pattern="^[+]{1}[0-9]{10,15}$" required></input>
     <label for="password">password</label>

@@ -8,30 +8,30 @@ app = Flask(__name__)
 #CORS(app)
 blogdb = BlogDB()
 
-@app.route("/blog", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def home():
     return render_template('blog.html', content="landed")
 
-@app.route("/blog/register", methods=['GET', 'POST'])
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     return render_template('register.html')
 
-@app.route("/blog/login", methods=['GET', 'POST'])
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
 
-@app.route("/blog/post", methods=['GET', 'POST'])
+@app.route("/post", methods=['GET', 'POST'])
 def post():
     return render_template('post.html')
 
-@app.route("/blog/view-posts", methods=['GET', 'POST'])
+@app.route("/view-posts", methods=['GET', 'POST'])
 def view_posts():
     return render_template('blog.html', content="Posts", posts=blogdb.posts())
 
 """
 Form targets
 """
-@app.route("/blog/register-action", methods=['POST'])
+@app.route("/register-action", methods=['POST'])
 def register_action():    
     first_name = request.form.get('first_name')
     last_name = request.form.get('last_name')
@@ -46,7 +46,7 @@ def register_action():
     blogdb.create_user(first_name, last_name, email, phone, password)
     return render_template('blog.html', content=f"created user with phone {phone}")
 
-@app.route("/blog/post-action", methods=['POST'])
+@app.route("/post-action", methods=['POST'])
 def post_action():
     if not session['token']:
         return render_template('blog.html', content="You are not logged in and, therefor, cannot post")
@@ -56,7 +56,7 @@ def post_action():
         blogdb.create_post(session['phone'], session['token'], post)
         return render_template('blog.html', content="Post made")
 
-@app.route("/blog/login-action", methods=['POST'])
+@app.route("/login-action", methods=['POST'])
 def login_action():
     # TODO validate phone and password
     phone = request.form.get('phone')
