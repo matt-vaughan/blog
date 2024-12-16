@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn instance to serve my blog
+After=network.target
+
+[Service]
+User=daemon
+Group=daemon
+WorkingDirectory=/opt/bitnami/nginx/html/blog
+ExecStart=/usr/bin/gunicorn --workers 3 --bind 0.0.0.0:5000 -m 007 blog:app
+
+[Install]
+WantedBy=multi-user.target
