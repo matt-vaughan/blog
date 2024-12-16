@@ -2,7 +2,7 @@
 <html><head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head><body>
-<form method="POST" action="/post-action">
+<form method="POST" action="/blog/post-action">
     <label for="post">post</label>
     <input id="post" name="post" type="textarea" rows="4" cols="50" placeholder="My post goes here" pattern="^[\w\s\.\-,\']+$" required></input>
     <input id="submit" type="submit">post</input>
