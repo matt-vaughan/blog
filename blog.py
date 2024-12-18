@@ -5,6 +5,7 @@ from blogdb import BlogDB
 import json
 
 app = Flask(__name__)
+app.secret_key = "TODO: Get this from a file outside what's available on the server"
 #CORS(app)
 blogdb = BlogDB()
 
@@ -37,7 +38,6 @@ def register_action():
     last_name = request.form.get('last_name')
     phone = request.form.get('phone')
     email = request.form.get('email')
-    print(f"Ok here is {first_name} {last_name}")
 
     password = request.form.get('password')
     if password != request.form.get('confirm_password'):
