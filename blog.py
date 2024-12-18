@@ -48,22 +48,23 @@ def register_action():
 
 @app.route("/post-action", methods=['POST'])
 def post_action():
-    if not session['token']:
+    if not session['token'] or not session['phone']:
         return render_template('blog.html', content="You are not logged in and, therefor, cannot post")
     else:
         post = request.form.get('post')
-        # TODO validate post
         blogdb.create_post(session['phone'], session['token'], post)
         return render_template('blog.html', content="Post made")
 
 @app.route("/login-action", methods=['POST'])
 def login_action():
-    # TODO validate phone and password
     phone = request.form.get('phone')
     password = request.form.get('password')
-    
+
+    if not phone or not password:
+        return render_template('blog.html', content="Phone number or password invalid")
+
     token = blogdb.login_with_phone(phone, password)
-    if token == None:
+    if not token:
         return render_template('blog.html', content="Couldn't login")
     else:
         session['token'] = token
