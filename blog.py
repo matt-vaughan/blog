@@ -11,8 +11,11 @@ blogdb = BlogDB()
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('blog.html', content="landed")
-
+    if not session['token'] or not session['phone']:
+        return render_template('login.html')
+    else:
+        return render_template('blog.html', content="Posts", posts=blogdb.posts())
+        
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     return render_template('register.html')
@@ -24,10 +27,6 @@ def login():
 @app.route("/post", methods=['GET', 'POST'])
 def post():
     return render_template('post.html')
-
-@app.route("/view-posts", methods=['GET', 'POST'])
-def view_posts():
-    return render_template('blog.html', content="Posts", posts=blogdb.posts())
 
 """
 Form targets
