@@ -20,5 +20,12 @@
                 <p>{{post}}</p>
             {% endfor %}
         </div>
+    	<div>
+		<form method="POST" action="/post-action">
+		    	<label for="post">post</label>
+		    	<input id="post" name="post" type="textarea" rows="4" cols="50" placeholder="My post goes here" pattern="^[\w\s\.\-,\']+$" required></input>
+		    	<input id="submit" type="submit">post</input>
+		</form>
+	</div>
     </body>
 </html>
